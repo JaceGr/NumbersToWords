@@ -34,10 +34,16 @@ function Converter() {
     });
 
     // validate the response status here
-    console.log(response.status);
+    if(response.status !== 200) {
+      showError(`${response.status} Error`);
+      return;
+    }
     const data = await response.json();
+    if (data.error !== "" || data.error != null) {
+      showError(data.error);
+      return;
+    }
 
-    // validate outputText 
     setText(data.outputText);
     setError(false);
   }
