@@ -81,7 +81,7 @@ function Converter() {
       // Ensure both sides of the decimal are digits, allowing either side to be empty
       for(let i=0; i<dollarCent.length; i++) {
         if(isNaN(dollarCent[i]) || (isNaN(parseFloat(dollarCent[i])) && dollarCent[i] !== "")) {
-            showError("Please ensure only digits are used.");
+            showError("Please ensure only valid digits are used.");
             return false;
         }
       } 
@@ -93,8 +93,8 @@ function Converter() {
     }
 
     // Ensure number is not too large
-    if(dollars > 999999) {
-      showError("Apologies, this number is too large for this tool");
+    if(dollars > 999999 || input < 0) {
+      showError("Apologies, this number is not in the valid range for this tool");
       return false;
     }
 

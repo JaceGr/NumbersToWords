@@ -1,6 +1,9 @@
 namespace NumToWordsTesting;
 using NumToWords; 
 
+/**
+ * This class is validating the full functionality of the ConvertNumber method
+ */
 public class DollarConverterUnitTests
 {
     [Fact]

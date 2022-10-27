@@ -1,6 +1,9 @@
 namespace NumToWordsTesting;
 using NumToWords; 
 
+/**
+ * This class is unit testing the ConvertSection method that is used throughout ConverNumber
+ */
 public class SectionConverterUnitTests
 {
     [Fact]

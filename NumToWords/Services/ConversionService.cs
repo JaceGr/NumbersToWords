@@ -11,6 +11,25 @@ public class ConversionService
         {50, "FIFTY"}, {60, "SIXTY"}, {70, "SEVENTY"}, {80, "EIGHTY"}, {90, "NINETY"}, {0, ""}
     };
 
+    public double ValidateNumber(string input)
+    {
+        double inputAsNum;
+        // Check if number is a valid double
+        try
+        {
+            inputAsNum = double.Parse(input);
+        } catch {
+            return -1;
+        }
+        
+        // Check if number is within the allowed range
+        if(inputAsNum > 999999 || inputAsNum < 0) {
+            return -1;
+        }
+
+        return inputAsNum;
+    }
+
     public string ConvertNumber(double inputNum)
     {
         int dollars = (int)inputNum; 
@@ -53,49 +72,49 @@ public class ConversionService
     }
 
     // Convert a number between 20 and 99 to text.
-    public string ConvertTens(int number)
+    private string ConvertTens(int number)
     {
         if(number % 10 == 0) {
-            return this.words[this.GetTens(number)];
+            return this.words[this.GetTenDigit(number)];
         } else if(number / 10 == 0) {
-            return this.words[this.GetUnits(number)];
+            return this.words[this.GetUnitDigit(number)];
         } else {
-            return this.words[this.GetTens(number)] + "-" + this.words[this.GetUnits(number)];
+            return this.words[this.GetTenDigit(number)] + "-" + this.words[this.GetUnitDigit(number)];
         }
     }
 
     // Convert a number between 100 and 999 to text.
-    public string ConvertHundreds(int number)
+    private string ConvertHundreds(int number)
     {
         if(number % 100 > 0) {
-            return this.words[this.GetHundreds(number)] + " HUNDRED AND " 
-                + this.ConvertTens(this.GetTens(number) + this.GetUnits(number));
+            return this.words[this.GetHundredDigit(number)] + " HUNDRED AND " 
+                + this.ConvertTens(this.GetTenDigit(number) + this.GetUnitDigit(number));
             
         } else {
-            return this.words[this.GetHundreds(number)] + " HUNDRED";
+            return this.words[this.GetHundredDigit(number)] + " HUNDRED";
         }
     }
 
-    // Method to retrieve the number of units in a three digit number.
-    public int GetUnits(int number)
+    // Method to retrieve the unit digit in a three digit number.
+    private int GetUnitDigit(int number)
     {
         return number % 10;
     }
 
-    // Method to retrieve the number of tens in a three digit number.
-    public int GetTens(int number)
+    // Method to retrieve the tens digit in a three digit number.
+    private int GetTenDigit(int number)
     {
         return (number % 100) / 10 * 10;
     }
 
-    // Method to retrieve the number of hundreds in a three digit number.
-    public int GetHundreds(int number)
+    // Method to retrieve the hundreds digit in a three digit number.
+    private int GetHundredDigit(int number)
     {
         return number / 100;
     }
 
     // Method to retrieve the number of thousands from any number.
-    public int GetThousands(int number)
+    private int GetThousands(int number)
     {
         return number / 1000;
     }

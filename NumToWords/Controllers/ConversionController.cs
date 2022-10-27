@@ -15,23 +15,17 @@ public class ConversionController : ControllerBase
         if(input.inputNum == null) {
             return new ReturnTextObject("", "inputNum was not sent");
         }
-        double validatedNum = double.Parse(input.inputNum);
+
+        double validatedNum = _conversionService.ValidateNumber(input.inputNum);
+
+        if(validatedNum < 0) {
+            ReturnTextObject errorOutput = new ReturnTextObject(String.Empty, "Please enter a valid number");
+            return errorOutput;
+        }
 
         string text = _conversionService.ConvertNumber(validatedNum);
 
-        ReturnTextObject output = new ReturnTextObject(text, "error");
-        return output;
-    }
-    
-    [HttpGet]
-    [Route("result")]
-    public ReturnTextObject Result()
-    {
-        double validatedNum = double.Parse("123.45");
-
-        string text = _conversionService.ConvertNumber(validatedNum);
-
-        ReturnTextObject output = new ReturnTextObject(text, "error");
+        ReturnTextObject output = new ReturnTextObject(text, String.Empty);
         return output;
     }
 
@@ -39,16 +33,16 @@ public class ConversionController : ControllerBase
 
 public class NumberInputObject
 {
-    public string? inputNum { get; set; }
+    public String? inputNum { get; set; }
 }
 
 public class ReturnTextObject
 {
-    public string? outputText { get; set; }
+    public String? outputText { get; set; }
 
-    public string? error { get; set; }
+    public String? error { get; set; }
 
-    public ReturnTextObject(string outputText, string error)
+    public ReturnTextObject(String outputText, String error)
     {
         this.outputText = outputText;
         this.error = error;
