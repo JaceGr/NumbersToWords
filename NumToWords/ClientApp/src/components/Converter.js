@@ -39,7 +39,7 @@ function Converter() {
       return;
     }
     const data = await response.json();
-    if (data.error !== "" || data.error != null) {
+    if (data.error !== "" && data.error != null) {
       showError(data.error);
       return;
     }
