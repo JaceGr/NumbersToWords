@@ -49,3 +49,9 @@
   padding: 10px;
   color: #264653;
 }
+
+.error-message {
+  font-size: 24px;
+  padding: 10px;
+  color: #e76f51;
+}
