@@ -8,9 +8,8 @@ The NumToWordsTesting directory contains an xUnit test project.
 There is one endpoint that is used as the entry-point for a clientside request which can be found in `NumToWords/Controllers/ConversionController.cs`. This controller creates an instance of the ConversionService class and utilises its methods to validate input and convert the number to words before returning the result.
 
 ## Running Application Instructions
-To run the application, navigate to the dotnet project in NumToWords directory and run: `dotnet run`.
-This will start the dotnet server. To access the web application, go to https://localhost:7184 or http://localhost:5267. This will start the react development server and route the browser to port 44487 where the front end application can be accessed. This is set up with the dotnet SPA proxy routing all requests through to the server in the development configuration.  
-
+To run the application, navigate to the dotnet project's publish folder at `NumToWords/bin/Debug/net6.0/publish`and run the command: `dotnet NumToWords.dll`.
+This will start the published production build. To access the web application, go to https://localhost:5001 or http://localhost:5000. This can also be run thorugh the development server by running `dotnet run` in the NumToWords project direcetory which will start the react development server and route the browser to port 44487 where the front end application can be accessed. This is set up with the dotnet SPA proxy routing all requests through to the server in the development configuration. 
 
 ## Solution Explanation
 The functionality in the ConversionService that was utilised for the conversion was based around the idea of building reusable functions that could break down the problem into smaller more understandable chunks of conversion. 
