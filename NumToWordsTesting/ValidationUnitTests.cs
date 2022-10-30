@@ -42,15 +42,15 @@ public class ValidationUnitTests
     public void UpperRangeBound()
     {
         double expected = -1;
-        double actual = new ConversionService().ValidateNumber("1000000");
+        double actual = new ConversionService().ValidateNumber("1000000000000000");
         Assert.Equal(expected, actual);
     }
 
     [Fact]
     public void UpperRangeBoundInner()
     {
-        double expected = 999999;
-        double actual = new ConversionService().ValidateNumber("999999");
+        double expected = 999999999999999.9;
+        double actual = new ConversionService().ValidateNumber("999999999999999.9");
         Assert.Equal(expected, actual);
     }
 

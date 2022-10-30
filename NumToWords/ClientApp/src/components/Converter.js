@@ -93,7 +93,7 @@ function Converter() {
     }
 
     // Ensure number is not too large
-    if(dollars > 999999 || input < 0) {
+    if(dollars >= 1000000000000000 || input < 0) {
       showError("Apologies, this number is not in the valid range for this tool");
       return false;
     }
