@@ -27,7 +27,7 @@ public class ConversionService
         }
         
         // Check if number is within the allowed range
-        if(inputAsNum >= 1000000000000000 || inputAsNum < 0) {
+        if(inputAsNum >= 10000000000000 || inputAsNum < 0) {
             return -1;
         }
 
@@ -85,7 +85,7 @@ public class ConversionService
                     }
                 }
             } 
-        } else if(dollars >= 1000000000000000) {
+        } else {
             return String.Empty;
         }
 
