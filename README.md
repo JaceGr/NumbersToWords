@@ -14,8 +14,12 @@ This will start the dotnet server. To access the web application, go to https://
 
 ## Solution Explanation
 The functionality in the ConversionService that was utilised for the conversion was based around the idea of building reusable functions that could break down the problem into smaller more understandable chunks of conversion. 
+
+The minimal amount of numbers required was stored in a dictionary (key: int, value: string) and all other numbers were derived from this list. This list included all numbers from 0-19 as well as all of the tens from 20 to to 90. An alternative to this dictionary approach could have been to use an array but for readability when accessing the values, it was decided to use the dictionary. This also made sense as all of the numbers were not sequential. Using multiple arrays (units, teens and tens) could have been another option but the simpler single dictionary was chosen.
+
 The reuse of `ConvertSection()` removed a large amount of code that would be repetitive as for each three digit numbers, the hundreds, tens and units have to be converted to words.
-A recursive solution was considered but for code readability the chosen solution was desired. 
+
+A recursive solution for the entire conversion was considered but for code readability the chosen solution was desired. 
 
 The application structure of separating the logic from the controller into a separate C# class was to improve readability and scalability in the case that this application was to be extended.
 
